@@ -120,6 +120,8 @@ class I18nTask extends TaskAbstract
             echo "Scanning $directory\n";
 
             foreach ($directoryIterator as $file=>$info) {
+                $file = ltrim($file, getcwd().'/');
+                
                 if ( $this->isFile($file, 'php') ) {
                     $this->exec($this->getTextParser('PHP', $file, $phpTmpPo));
                 } elseif ( $this->isFile($file, 'volt') ) {
